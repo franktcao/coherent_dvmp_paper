@@ -1,0 +1,12 @@
+#! /bin/bash
+DATE=`date +%y%m%d`
+NAME=paper
+cd guts/
+pdflatex -shell-escape $NAME.tex
+bibtex $NAME
+#pdflatex -shell-escape $NAME.tex
+cp {,$DATE"_"}$NAME.pdf
+cd ../
+ln -sfn guts/$DATE"_$NAME.pdf"
+open $DATE"_$NAME.pdf"
+
